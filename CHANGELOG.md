@@ -11,6 +11,31 @@ behind new EventStoreDB versions. You should not downgrade your Spear version
 in order to avoid these features: Spear aims to keep a stable interface usable
 across all EventStoreDB versions v20+.
 
+## 1.3.2 - 2023-06-12
+
+### Fixed
+
+- Fixed a crash on start-up when Application environment values were not
+  set for a `Spear.Client` module using `use Spear.Client`.
+- Improved documentation for event metadata.
+
+## 1.3.1 - 2023-04-04
+
+### Fixed
+
+- HTTP/2 window size is now properly checked in `Spear.Connection` before
+  attempting to send ack, nack, and batch-append messages.
+    - Without this fix, some ack, nack and batch-append messages could be
+      silently dropped on busy connections.
+
+## 1.3.0 - 2022-12-09
+
+### Added
+
+- Added documentation for setting up connection pools.
+- Added `:on_connect` and `:on_disconnect` hook options for `Spear.Connection`
+  which can be used for pooling.
+
 ## 1.2.1 - 2022-11-14
 
 ### Fixed

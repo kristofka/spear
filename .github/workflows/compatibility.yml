@@ -1,11 +1,11 @@
 name: Compatibility
 
-on: push
+on: [push, pull_request]
 
 jobs:
   compatibility:
     name: Bless
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     strategy:
       fail-fast: false
       matrix:
@@ -33,7 +33,7 @@ jobs:
       run: docker-compose up --detach eventstore
 
     - name: Setup Elixir and Erlang versions
-      uses: erlef/setup-beam@v1.7.0
+      uses: erlef/setup-beam@v1
       with:
         otp-version: ${{ matrix.beam.otp }}
         elixir-version: ${{ matrix.beam.elixir }}
