@@ -14,10 +14,16 @@ defmodule Spear.Reading do
 
   @uuid Streams.read_req_options_uuid_option(content: {:string, empty()})
 
+  @spec decode_read_response(
+          Streams.read_resp() | Persistent.read_resp(),
+          reference()
+        ) :: Spear.Event.t() | Spear.Filter.Checkpoint.t() | :caught_up | :fell_behind
   def decode_read_response(Streams.read_resp(content: {kind, _body}) = read_resp, subscription) do
     case kind do
       :event -> Spear.Event.from_read_response(read_resp, metadata: %{subscription: subscription})
       :checkpoint -> Spear.Filter.Checkpoint.from_read_response(read_resp, subscription)
+      :caught_up -> :caught_up
+      :fell_behind -> :fell_behind
     end
   end
 

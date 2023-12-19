@@ -732,6 +732,7 @@ defmodule SpearTest do
       assert {:ok, sub} = Spear.subscribe(c.conn, self(), Spear.scavenge_stream(scavenge))
       assert_receive %Spear.Event{type: "$scavengeStarted"}
       assert_receive %Spear.Event{type: "$scavengeCompleted"}
+      :timer.sleep(10)
       # cannot stop a scavenge after it is complete, get a not-found error
       assert {:error, reason} = Spear.stop_scavenge(c.conn, scavenge.id)
       assert reason.status == :not_found

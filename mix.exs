@@ -45,9 +45,9 @@ defmodule Spear.MixProject do
   defp deps do
     [
       # hard dependencies
-      {:mint, "~> 1.0"},
-      {:gpb, "~> 4.0"},
-      {:event_store_db_gpb_protobufs, "~> 2.2"},
+      {:mint, "~> 1.5"},
+      {:gpb, "~> 4.20"},
+      {:event_store_db_gpb_protobufs, path: "../event_store_db_gpb_protobufs"},
       {:connection, "~> 1.0"},
       # optional dependencies
       {:jason, ">= 0.0.0", optional: true},
@@ -55,9 +55,9 @@ defmodule Spear.MixProject do
       {:castore, ">= 0.0.0", only: [:dev, :test]},
       {:ex_doc, "~> 0.24", only: :dev, runtime: false},
       # testing suite
-      {:credo, "~> 1.5", only: :test},
+      {:credo, "~> 1.7", only: :test},
       {:bless, "~> 1.0", only: :test},
-      {:excoveralls, "~> 0.7", only: :test}
+      {:excoveralls, "~> 0.18", only: :test}
     ]
   end
 

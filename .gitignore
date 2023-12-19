@@ -25,3 +25,6 @@ spear-*.tar
 
 # Temporary files for e.g. tests
 /tmp
+
+.idea
+spear.iml

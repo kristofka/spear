@@ -163,7 +163,7 @@ defmodule Spear.Connection.Configuration do
         false
 
       value when value in 0..@default_keepalive ->
-        Logger.warn("Specified #{key} of #{value} is less than recommended 10_000ms")
+        Logger.warning("Specified #{key} of #{value} is less than recommended 10_000ms")
 
         value
 
